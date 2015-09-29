@@ -1,0 +1,31 @@
+import simplegui
+
+# state global variables
+variable = 5
+
+# create event handlers
+def keydown(key):
+    global variable
+    variable = variable * 2
+    print variable
+
+def keyup(key):
+    global variable
+    variable = variable - 3
+    print variable
+    print ""
+    
+
+def draw(canvas):
+    canvas.draw_text(str(variable), [30, 50], 24, "White")
+
+# create frame
+frame = simplegui.create_frame("Opn", 100, 100)
+
+# register event handlers
+frame.set_keydown_handler(keydown)
+frame.set_keyup_handler(keyup)
+frame.set_draw_handler(draw)
+
+# start frame and timer
+frame.start()
